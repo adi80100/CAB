@@ -1,4 +1,3 @@
-import mongoose, { model } from "mongoose";
 import mongoose, { Schema } from "mongoose";
 
 const tweetSchema = mongoose.Schema(
@@ -13,8 +12,5 @@ const tweetSchema = mongoose.Schema(
         }
     }
     ,{timestamps:true})
-
-
-
-
+    
 export const Tweet = mongoose.model("Tweet",tweetSchema)
