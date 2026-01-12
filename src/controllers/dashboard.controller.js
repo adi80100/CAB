@@ -16,6 +16,8 @@ const getChannelStats = asyncHandler(async (req, res) => {
     const totalVideos = await Video.countDocuments({owner:channelId})
     
     // aggreagate total views
+    // id has to be null because we want didnot want to group 
+    // here we need one final result
     const totalViewResults = await Video.aggregate([
         {
             $match:{
