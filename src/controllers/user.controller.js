@@ -47,7 +47,7 @@ const registerUser = asyncHandler(async(req,res)=>{
         throw new ApiError(400,"All fields are reqired")
     }
 
-    // vlaidatoin - chcks if any of the value is repeated
+    // validatoin - chcks if any of the value is repeated
     const existedUser = await User.findOne({
         $or:[{username},{email}]
     })
@@ -110,10 +110,16 @@ const loginUser = asyncHandler(async(req,res)=>{
     if(!username && !email){
         throw new ApiError(400,"username or email is required");
     }
+    if(!password){
+        throw new ApiError(400,"password is required");
+    }
     // if(!(username || email)){
     //     throw new ApiError(400,"username or email is required");
     // }
+
+
     // find the user
+    // this can done in two process one can store in query array and push it and then check it for the smae
     const user = await User.findOne({
         $or:[{username},{email}]
     })
